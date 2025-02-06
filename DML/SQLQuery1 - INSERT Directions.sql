@@ -1,0 +1,10 @@
+USE PV_319_DDL;
+GO
+
+INSERT Directions
+		(direction_id, direction_name) 
+VALUES	(1,				N'Разботка прграммного беспечения'),
+		(2,				N'Сетевые технологии и системное администрирование'),
+		(3,				N'Копмьютерная графика и дизайн'),
+		(4,				N'Java developmet')
+;
