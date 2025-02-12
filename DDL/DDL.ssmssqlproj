@@ -62,7 +62,13 @@
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-IIFDPU3\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-IIFDPU3\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>E:\Users\Maxim Sidorenko\source\repos\DBMS\DDL\SQLQuery4 - CREATE TABLE Schedule.sql</FullPath>
+          <FullPath>SQLQuery4 - CREATE TABLE Schedule.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery5 - ALTER.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-IIFDPU3\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-IIFDPU3\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery5 - ALTER.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
