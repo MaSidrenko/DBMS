@@ -5,6 +5,6 @@ CREATE TABLE Groups
 (
 	group_id		INT				PRIMARY KEY,
 	group_name		NVARCHAR(16)	NOT NULL,
-	direction		tinyint			NOT NULL 
+	direction		TINYINT			NOT NULL 
 	CONSTRAINT FK_Groups_Directions	FOREIGN KEY REFERENCES Directions(direction_id)
 );
