@@ -3,6 +3,7 @@ GO
 
 SET DATEFIRST 1;
 
+
 SELECT 
 		group_name					AS		N'Группа', 
 		discipline_name				AS		N'Дисциплина',
