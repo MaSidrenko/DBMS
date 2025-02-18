@@ -38,7 +38,7 @@ BEGIN
 						([group], discipline, teacher, [date], [time], spent)
 				VALUES	(@group, @discipline, @teacher, @date, @time, IIF(@date < GETDATE(), 1, 0));
 			END
-			--	IIF(condition, value_1, value_2);
+	--	IIF(condition, value_1, value_2);
 			SET	@lesson = @lesson+1;
 	
 			PRINT(@lesson);

@@ -76,12 +76,6 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery2 - COUNT Teachers AND Disciplines.sql</FullPath>
         </FileNode>
-        <FileNode Name="SQLQuery2.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-IIFDPU3\SQLEXPRESS:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>DESKTOP-IIFDPU3\SQLEXPRESS</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>SQLQuery2.sql</FullPath>
-        </FileNode>
         <FileNode Name="SQLQuery3 - COUNT Disciplines for Directions.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-IIFDPU3\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-IIFDPU3\SQLEXPRESS</AssociatedConnSrvName>

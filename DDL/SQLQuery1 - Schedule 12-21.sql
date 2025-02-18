@@ -1,0 +1,4 @@
+USE PV_319_IMPORT;
+GO
+
+SELECT * FROM Disciplines;
