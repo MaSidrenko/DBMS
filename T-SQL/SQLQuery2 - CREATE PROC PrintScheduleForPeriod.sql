@@ -7,9 +7,6 @@ ALTER PROCEDURE sp_PrintScheduleForPeriod
 @end_date			DATE
 AS
 BEGIN
-	SET DATEFIRST 1;
-	WHILE(@start_date != @end_date)
-	BEGIN
 		SELECT
 				group_name						AS		N'Группа',
 				discipline_name					AS		N'Дисциплина',
@@ -21,17 +18,9 @@ BEGIN
 				IIF(spent = 1, N'Проведено', N'Запланировано')							
 											AS		N'Статус'
 		FROM	Schedule, Groups,Disciplines, Teachers
-		WHERE	[group]				=		group_id
-		AND		discipline			=		discipline_id
-		AND		teacher				=		teacher_id
-		AND		[date]				=		@start_date
-		IF(DATEPART(WEEKDAY, @start_date)=6)
-			BEGIN
-				SET	@start_date = DATEADD(DAY, 3, @start_date);
-			END
-			ELSE
-			BEGIN
-				SET	@start_date = DATEADD(DAY, 2, @start_date);
-			END
-	END
+		WHERE	[group]					=		group_id
+		AND		discipline				=		discipline_id
+		AND		teacher					=		teacher_id
+		AND		[date] 					BETWEEN @start_date AND @end_date
 END
+;

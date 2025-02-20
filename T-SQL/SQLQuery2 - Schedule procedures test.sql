@@ -2,9 +2,15 @@ USE PV_319_IMPORT;
 GO
 
 --EXEC sp_SetScheduleForStacionarGroup
---N'PV_319', N'%UML%', N'Ковтун', N'2024-08-10', N'18:30';
+--N'PD_321', N'%MS SQL Server%', N'Покидюк', N'2024-06-01', N'13:30';
 
---EXEC sp_PrintScheduleForGroup N'PV_319';
 
---SELECT * FROM Schedule;
-==EXEC sp_PrintScheduleForPeriod N'PV_319', N'2024-08-10', N'2024-10-10';
+--EXEC sp_PrintScheduleForGroup N'PD_321';
+
+
+--DECLARE	@salary AS SMALLMONEY;  
+--
+--EXEC @salary = sp_CountTeachersMounthSalary N'Ковтун', 2024, 06;
+--PRINT(@salary);
+
+EXEC sp_ScheduleForBaseStacionarGroup N'PV_319', N'Процедураное программирование %', N'Ковтун', N'2023-11-23', '18:30', 2, 4 ,6, 2, 1;
