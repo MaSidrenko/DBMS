@@ -9,9 +9,7 @@ ALTER PROCEDURE sp_ScheduleForBaseStacionarGroup
 	@teacher_last_name		NVARCHAR(50),
 	@start_date				DATE,
 	@time					TIME(0),
-	@learint_1				TINYINT,
-	@learint_2				TINYINT,
-	@learint_3				TINYINT,
+	@resident_day			TINYINT,
 	@alernating_day			TINYINT,
 	@first_week_present		BIT
 AS
@@ -23,11 +21,28 @@ BEGIN
 	DECLARE @current_week_present	AS BIT		= @first_week_present;  
 	DECLARE @number_of_lessons		AS TINYINT	= (SELECT number_of_lessons	FROM Disciplines	WHERE discipline_id	= @discipline);
 	DECLARE @lesson_number			AS TINYINT	= 0;
+	
+	DECLARE	@rr_interval			AS	TINYINT = 7; --Resident to Resident Interval;
+	DECLARE	@ar_interval			AS	TINYINT	= IIF(@alernating_day > @resident_day, @alernating_day - @resident_day, @resident_day - @alernating_day);
+	DECLARE	@ra_interval			AS	TINYINT = @rr_interval - @ar_interval
+	PRINT(N'Intervals:');
+	PRINT(@rr_interval);
+	PRINT(@ar_interval);
+	PRINT(@ra_interval);
 
 	WHILE(@lesson_number < @number_of_lessons)
 	BEGIN
 		PRINT(@date);
 		PRINT(DATENAME(WEEKDAY, @date));
+		IF NOT EXISTS (SELECT lesson_id FROM Schedule WHERE [group] = @group AND discipline = @discipline AND [date] = @date AND [time] = @time)
+		BEGIN
+			INSERT Schedule 
+					([group], discipline, teacher, [date], [time], spent)
+			VALUES
+					(@group, @discipline, @teacher, @date, @time, IIF(@date < GETDATE(), 1, 0))
+		END
+
+
 		PRINT(@lesson_number + 1);
 		PRINT(@time);
 		SET @lesson_number = @lesson_number + 1;
@@ -36,16 +51,30 @@ BEGIN
 		SET @lesson_number = @lesson_number + 1;
 		PRINT('-------------------------');
 		PRINT(DATEPART(WEEKDAY, @date));
+		
+		IF NOT EXISTS (SELECT lesson_id FROM Schedule WHERE [group] = @group AND discipline = @discipline AND [date] = @date AND [time] = DATEADD(MINUTE, 95, @time))
+		BEGIN
+			INSERT Schedule 
+					([group], discipline, teacher, [date], [time], spent)
+			VALUES
+					(@group, @discipline, @teacher, @date, DATEADD(MINUTE, 95, @time), IIF(@date < GETDATE(), 1, 0))
+		END
+		
 		PRINT(@alernating_day);
+
+		PRINT('Current week present');
+		PRINT(@current_week_present);
+
+
 		IF(DATEPART(WEEKDAY, @date) = @alernating_day)
 		BEGIN
-			SET @date = DATEADD(DAY, 2, @date);
+			SET @date = DATEADD(DAY, @ar_interval, @date);
 		END
-		ELSE IF(DATEPART(WEEKDAY, @date) = 4)
+		ELSE IF(DATEPART(WEEKDAY, @date) = @resident_day)
 		BEGIN
-			SET @date = IIF(@current_week_present = 1, DATEADD(DAY, 7, @date), DATEADD(DAY, 4, @date));
+			SET @date = IIF(@current_week_present = 1, DATEADD(DAY, @rr_interval, @date), DATEADD(DAY, @ra_interval, @date));
+			SET @current_week_present = IIF(@current_week_present = 1, 0 ,1);
 		END
-		SET @current_week_present = IIF(@current_week_present = 1, 0 ,1);
 		PRINT('====================================');
 	END
 END
