@@ -1,0 +1,7 @@
+USE PV_319_IMPORT;
+GO
+
+ALTER FUNCTION GetHolidaysDuration(@name AS NVARCHAR(150)) RETURNS TINYINT
+BEGIN
+	RETURN (SELECT diration FROM Holidays WHERE holiday_name LIKE @name);
+END
