@@ -2,7 +2,7 @@ USE PV_319_IMPORT;
 SET DATEFIRST 1;
 GO
 
-EXEC sp_AddHolidays 2025, N'День%';
+--EXEC sp_AddHolidays 2025, N'День%';
 
 SELECT 
 			[date]			AS		N'Дата',
