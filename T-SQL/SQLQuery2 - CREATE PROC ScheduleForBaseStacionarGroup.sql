@@ -2,6 +2,8 @@ USE PV_319_IMPORT;
 SET DATEFIRST 1;
 GO
 
+--DROP PROCEDURE sp_ScheduleForBaseStacionarGroup;
+--GO
 
 ALTER PROCEDURE sp_ScheduleForBaseStacionarGroup
 	@group_name				NVARCHAR(16),
@@ -33,37 +35,46 @@ BEGIN
 	WHILE(@lesson_number < @number_of_lessons)
 	BEGIN
 		PRINT(@date);
-		PRINT(DATENAME(WEEKDAY, @date));
-		IF NOT EXISTS (SELECT lesson_id FROM Schedule WHERE [group] = @group AND discipline = @discipline AND [date] = @date AND [time] = @time)
+		--PRINT(DATENAME(WEEKDAY, @date));
+		IF(NOT EXISTS (SELECT [date] FROM DaysOFF WHERE [date]= @date))
 		BEGIN
-			INSERT Schedule 
-					([group], discipline, teacher, [date], [time], spent)
-			VALUES
-					(@group, @discipline, @teacher, @date, @time, IIF(@date < GETDATE(), 1, 0))
+			PRINT(N'Insert lessons');
+			IF NOT EXISTS (SELECT lesson_id FROM Schedule WHERE [group] = @group AND discipline = @discipline AND [date] = @date AND [time] = @time)
+			BEGIN
+				INSERT Schedule 
+						([group], discipline, teacher, [date], [time], spent)
+				VALUES
+						(@group, @discipline, @teacher, @date, @time, IIF(@date < GETDATE(), 1, 0))
+			END
+
+
+			PRINT(@lesson_number + 1);
+			PRINT(@time);
+			SET @lesson_number = @lesson_number + 1;
+			PRINT(@lesson_number + 1);
+			PRINT(DATEADD(MINUTE, 95, @time));
+			SET @lesson_number = @lesson_number + 1;
+			PRINT('-------------------------');
+			PRINT(DATEPART(WEEKDAY, @date));
+			
+			IF NOT EXISTS (SELECT lesson_id FROM Schedule WHERE [group] = @group AND discipline = @discipline AND [date] = @date AND [time] = DATEADD(MINUTE, 95, @time))
+			BEGIN
+				INSERT Schedule 
+						([group], discipline, teacher, [date], [time], spent)
+				VALUES
+						(@group, @discipline, @teacher, @date, DATEADD(MINUTE, 95, @time), IIF(@date < GETDATE(), 1, 0))
+			END
 		END
-
-
-		PRINT(@lesson_number + 1);
-		PRINT(@time);
-		SET @lesson_number = @lesson_number + 1;
-		PRINT(@lesson_number + 1);
-		PRINT(DATEADD(MINUTE, 95, @time));
-		SET @lesson_number = @lesson_number + 1;
-		PRINT('-------------------------');
-		PRINT(DATEPART(WEEKDAY, @date));
-		
-		IF NOT EXISTS (SELECT lesson_id FROM Schedule WHERE [group] = @group AND discipline = @discipline AND [date] = @date AND [time] = DATEADD(MINUTE, 95, @time))
+		ELSE
 		BEGIN
-			INSERT Schedule 
-					([group], discipline, teacher, [date], [time], spent)
-			VALUES
-					(@group, @discipline, @teacher, @date, DATEADD(MINUTE, 95, @time), IIF(@date < GETDATE(), 1, 0))
+			--PRINT(@date);
+			PRINT(N'Holidays');
 		END
 		
-		PRINT(@alernating_day);
+		--PRINT(@alernating_day);
 
-		PRINT('Current week present');
-		PRINT(@current_week_present);
+		--PRINT('Current week present');
+		--PRINT(@current_week_present);
 
 
 		IF(DATEPART(WEEKDAY, @date) = @alernating_day)

@@ -22,6 +22,18 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
+        <FileNode Name="SQLQuery0 - Holidays procedures test.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-IIFDPU3\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-IIFDPU3\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery0 - Holidays procedures test.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery0 - Schedule procedures test.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-IIFDPU3\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-IIFDPU3\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery0 - Schedule procedures test.sql</FullPath>
+        </FileNode>
         <FileNode Name="SQLQuery0 - SELECT FROM Schedule.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-IIFDPU3\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-IIFDPU3\SQLEXPRESS</AssociatedConnSrvName>
@@ -81,6 +93,24 @@
           <AssociatedConnSrvName>DESKTOP-IIFDPU3\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>SQLQuery3 - CREATE TABLE Salary.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery7 - CREATE PROC  AddHolidaysFor.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-IIFDPU3\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-IIFDPU3\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery7 - CREATE PROC  AddHolidaysFor.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery7 - CREATE PROC AddHolidays.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-IIFDPU3\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-IIFDPU3\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery7 - CREATE PROC AddHolidays.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery7 - CREATE PROC New_Year.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery7 - CREATE PROC New_Year.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
