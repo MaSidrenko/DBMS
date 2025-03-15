@@ -19,8 +19,9 @@ SET DATEFIRST 1;
 
 --DELETE FROM Schedule;
 
-EXEC sp_ScheduleForBaseStacionarGroup N'PV_319', N'Процедурное программирование %', N'Ковтун', N'2023-11-23', '18:30', 4,2, 1;
-EXEC sp_ScheduleForBaseStacionarGroup N'PV_319', N'Hardware%', N'Кобылинский', N'2023-11-25', '18:30', 6,2, 0;
-EXEC dbo.sp_SetScheduleForStacionarGroup N'PV_319', N'%Объектно%', N'Ковтун', N'2024-06-01', N'18:30';
-EXEC dbo.sp_SetScheduleForStacionarGroup N'PV_319', N'%UML%', N'Ковтун', N'2024-08-24', N'18:30';
+--EXEC sp_ScheduleForBaseStacionarGroup N'PV_319', N'Процедурное программирование %', N'Ковтун', N'2023-11-23', '18:30', 4,2, 1;
+--EXEC sp_ScheduleForBaseStacionarGroup N'PV_319', N'Hardware%', N'Кобылинский', N'2023-11-25', '18:30', 6,2, 0;
+--EXEC dbo.sp_SetScheduleForStacionarGroup N'PV_319', N'%Объектно%', N'Ковтун', N'2024-06-01', N'18:30';
+--EXEC dbo.sp_SetScheduleForStacionarGroup N'PV_319', N'%UML%', N'Ковтун', N'2024-08-24', N'18:30';
+EXEC sp_SetScheduleForStacionarGroup N'PV_319', N'Язык%C#', N'Ковтун';
 EXEC sp_PrintScheduleForGroup N'PV_319';
